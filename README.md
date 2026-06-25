@@ -1,191 +1,189 @@
 # Daily Task Tracker
 
-A modern web application for managing your daily tasks and organizing them by categories. Built with Laravel, Tailwind CSS, and Alpine.js.
+Современное веб-приложение для управления ежедневными задачами и их сортировка по категориям. Разработано с использованием Laravel, Tailwind CSS и Alpine.js.
 
 ## Features
 
-- **User Authentication**: Secure login and registration system
-- **Task Management**: Create, view, update, and delete tasks with ease
-- **Categories**: Organize tasks into custom categories
-- **Recurring Tasks**: Set up tasks that repeat on a schedule
-- **Dashboard**: View task statistics and overdue tasks at a glance
-- **User Profiles**: Manage your account settings
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Аутентификация пользователей**: безопасная система входа и регистрации.
+- **Управление задачами**: создание, просмотр, редактирование и удаление задач.
+- **Категории**: организация задач по пользовательским категориям.
+- **Повторяющиеся задачи**: настройка задач, выполняющихся по расписанию.
+- **Панель управления**: просмотр статистики задач и просроченных задач.
+- **Профили пользователей**: управление настройками учетной записи.
+- **Адаптивный дизайн**: корректная работа на компьютерах и мобильных устройствах.
 
-## Tech Stack
+## Технологический стек
+- **Бэкенд**: Laravel 13 (PHP 8.4)
+- **База данных**: MySQL 8.4
+- **Фронтенд**: Alpine.js 3, Tailwind CSS 4
+- **Сборщик**: Vite
+- **Среда разработки**: Docker с Laravel Sail
+- **Тестирование**: PHPUnit 12
 
-- **Backend**: Laravel 13 (PHP 8.4)
-- **Database**: MySQL 8.4
-- **Frontend**: Alpine.js 3, Tailwind CSS 4
-- **Build Tool**: Vite
-- **Development Environment**: Docker with Laravel Sail
-- **Testing**: PHPUnit 12
-
-## Requirements
+## Требования
 
 - Docker & Docker Compose
 - Composer
-- Node.js (handled by Sail)
+- Node.js (устанавливается и используется через Sail)
 
-## Installation
+## Установка
 
-### 1. Clone the Repository
+### 1. Клонируйте репозиторий
 
 ```bash
 git clone <repository-url>
 cd daily-task-tracker-laravel
 ```
 
-### 2. Install Dependencies
+### 2. Установите зависимости
 
 ```bash
-# Install PHP dependencies
+# Установите PHP зависимости
 composer install
 
-# Start Docker containers
+# Запистите Docker контейнеры
 ./vendor/bin/sail up -d
 
-# Install Node dependencies
+# Установите Node зависимости
 ./vendor/bin/sail npm install
 ```
 
-### 3. Setup Environment
+### 3. Установка Окружения
 
 ```bash
-# Copy environment file
+# Скопируйте файл .env
 cp .env.example .env
 
-# Generate application key
+# Сгенерируйте ключи для приложения
 ./vendor/bin/sail artisan key:generate
 ```
 
-### 4. Database Setup
+### 4. Настройка базы данных
 
 ```bash
-# Run migrations
+# Запустите миграции
 ./vendor/bin/sail artisan migrate
 
-# (Optional) Seed sample data
+# (Необязательно) Заполнените базы данных тестовыми данными
 ./vendor/bin/sail artisan db:seed
 ```
 
-### 5. Build Frontend Assets
+### 5. Сборка фронтенда
 
 ```bash
 ./vendor/bin/sail npm run build
 ```
 
-### 6. Access the Application
+### 6. Доступ к приложению
 
-Open your browser and navigate to: **http://localhost**
+Откройте браузер и перейдите по адресу: **http://localhost**
 
-## Usage
+## Использование
 
-### Daily Workflow
+### Ежедневный рабочий процесс
 
-1. **Login**: Sign in with your credentials
-2. **View Dashboard**: See your task overview and statistics
-3. **Create Tasks**: Add new tasks and assign them to categories
-4. **Manage Categories**: Create and organize task categories
-5. **Track Progress**: Mark tasks as complete or delete them
-6. **Set Recurring Tasks**: Schedule tasks that repeat automatically
+1. **Вход**: авторизуйтесь под своей учетной записью.
+2. **Просмотр панели управления**: получите обзор задач и статистики.
+3. **Создание задач**: добавляйте новые задачи и назначайте им категории.
+4. **Управление категориями**: создавайте и организуйте категории задач.
+5. **Отслеживание прогресса**: отмечайте задачи как выполненные или удаляйте их.
+6. **Настройка повторяющихся задач**: создавайте задачи, которые будут автоматически повторяться.
 
-### Task Management
+### Управление задачами
 
-- **Create Task**: Click "Create Task" and fill in the details
-- **Edit Task**: Click on a task to update its information
-- **Delete Task**: Remove tasks you no longer need
-- **View Tasks**: Browse all tasks or filter by category
+- **Создать задачу**: нажмите на кнопку «НОВАЯ ЗАДАЧА» и заполните необходимые поля.
+- **Редактировать задачу**: откройте задачу для изменения её данных.
+- **Удалить задачу**: удалите задачу, которая больше не нужна.
+- **Просмотреть задачи**: просматривайте все задачи или фильтруйте их по категориям.
 
-### Categories
+### Категории
 
-- **Create Category**: Add new task categories
-- **Edit Category**: Update category names and details
-- **Delete Category**: Remove categories (tasks will be unassigned)
-- **Filter by Category**: View tasks organized by category
+- **Создать категорию**: добавьте новую категорию задач.
+- **Редактировать категорию**: измените название и описание категории.
+- **Удалить категорию**: удалите категорию (задачи останутся без категории).
+- **Фильтрация по категории**: просматривайте задачи, сгруппированные по категориям.
 
-## Development
+## Разработка
 
-### Running the Development Server
+### Запуск сервера разработки
 
 ```bash
-# Start all services
+# Запустите все службы
 ./vendor/bin/sail up -d
 
-# Watch for frontend changes
+# Наблюдайте за изменениями фронтенда без перезагрузки страницы
 ./vendor/bin/sail npm run dev
 
-# Or run in background
+# Или запустите в фоновом режиме
 ./vendor/bin/sail composer run dev
 ```
 
-### Database
+### База данных
 
-Create and manage testing database:
+Создайте и управляйте тестовой базой данных:
 
 ```bash
-# Create testing database
 ./vendor/bin/sail mysql -h mysql -u sail -ppassword -e "CREATE DATABASE IF NOT EXISTS testing;"
 ```
 
-## Testing
+## Тестирование
 
-Run the test suite to ensure everything is working correctly:
+Для проверки корректной работы приложения выполните тесты:
 
 ```bash
-# Run all tests
+# Запуск всех тестов
 ./vendor/bin/sail artisan test
 
-# Run with compact output
+# Запуск с компактным выводом
 ./vendor/bin/sail artisan test --compact
 
-# Run specific test file
+# Запуск конкретного файла тестов
 ./vendor/bin/sail artisan test tests/Feature/Controllers/TaskControllerTest.php
 
-# Run with filter
+# Запуск тестов по фильтру
 ./vendor/bin/sail artisan test --filter=testMethodName
 ```
 
-## Code Quality
+## Качество кода
 
-Format your code using Laravel Pint:
+Отформатируйте код с помощью Laravel Pint:
 
 ```bash
 ./vendor/bin/sail bin pint
 ```
 
-## Common Commands
+## Полезные команды
 
 ```bash
-# Stop containers
+# Остановка контейнеров
 ./vendor/bin/sail stop
 
-# Stop and remove containers
+# Остановка и удаление контейнеров
 ./vendor/bin/sail down
 
-# View logs
+# Просмотр логов
 ./vendor/bin/sail logs
 
-# Access Laravel Tinker (REPL)
+# Доступ к Laravel Tinker (REPL)
 ./vendor/bin/sail tinker
 
-# Create model with migration and factory
+# Создание модели с миграцией и фабрикой
 ./vendor/bin/sail artisan make:model ModelName -mf
 
-# Create controller
+# Создание контроллера
 ./vendor/bin/sail artisan make:controller ControllerName
 
-# Create migration
+# Создание миграции
 ./vendor/bin/sail artisan make:migration create_table_name
 
-# Cache clear
+# Очистка кэша
 ./vendor/bin/sail artisan cache:clear
 
-# View routes
+# Просмотр маршрутов
 ./vendor/bin/sail artisan route:list
 ```
 
-## Project Structure
+## Структура проекта
 
 ```
 app/
@@ -217,9 +215,9 @@ tests/
 └── Unit/            # Unit tests
 ```
 
-## Environment Variables
+## Переменные окружения
 
-Key environment variables in `.env`:
+Основные переменные в файле `.env`:
 
 ```
 APP_NAME="Daily Task Tracker"
@@ -239,41 +237,41 @@ CACHE_STORE=database
 QUEUE_CONNECTION=database
 ```
 
-## Troubleshooting
+## Решение распространённых проблем
 
-### Containers won't start
+### Контейнеры не запускаются
 
 ```bash
 docker compose down -v
 docker compose up -d --build
 ```
 
-### Application key error
+### Ошибка ключа приложения
 
 ```bash
 ./vendor/bin/sail artisan key:generate
 ```
 
-### Database connection error
+### Ошибка подключения к базе данных
 
-Ensure MySQL container is running and database exists:
+Убедитесь, что контейнер MySQL запущен и база данных существует:
 
 ```bash
 ./vendor/bin/sail artisan migrate
 ```
 
-### Frontend changes not showing
+### Изменения на фронтенде не отображаются
 
-Rebuild assets:
+Пересоберите ресурсы:
 
 ```bash
 ./vendor/bin/sail npm run build
 ```
 
-## License
+## Лицензия
 
-This project is open source and available under the MIT License.
+Проект распространяется с открытым исходным кодом по лицензии MIT.
 
-## Support
+## Поддержка
 
-For issues or questions, please check the [Laravel documentation](https://laravel.com/docs) or create an issue in the repository.
+Если у вас возникли вопросы или проблемы, ознакомьтесь с документацией Laravel (https://laravel.com/docs)  или создайте Issue в репозитории.

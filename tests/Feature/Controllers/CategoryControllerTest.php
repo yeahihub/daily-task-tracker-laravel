@@ -82,7 +82,7 @@ class CategoryControllerTest extends TestCase
         );
 
         $response->assertRedirect(route('categories.index'));
-        $response->assertSessionHas('success', 'Category created successfully.');
+        $response->assertSessionHas('success', __('messages.categories.Category created successfully'));
         $this->assertDatabaseHas(
             'categories',
             [
@@ -144,7 +144,7 @@ class CategoryControllerTest extends TestCase
         );
 
         $response->assertRedirect(route('categories.index'));
-        $response->assertSessionHas('success', 'Category updated successfully.');
+        $response->assertSessionHas('success', __('messages.categories.Category updated successfully'));
         $this->assertDatabaseHas(
             'categories',
             [

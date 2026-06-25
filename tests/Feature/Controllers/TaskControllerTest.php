@@ -59,7 +59,7 @@ class TaskControllerTest extends TestCase
         $response = $this->actingAs($user)->post(route('tasks.store'), $taskData);
 
         $response->assertRedirect(route('tasks.index'));
-        $response->assertSessionHas('success', 'Task created successfully.');
+        $response->assertSessionHas('success', __('messages.tasks.Task created successfully'));
 
         $this->assertDatabaseHas(
             'tasks',
@@ -327,7 +327,7 @@ class TaskControllerTest extends TestCase
         );
 
         $response->assertRedirect(route('tasks.index'));
-        $response->assertSessionHas('success', 'Task updated successfully.');
+        $response->assertSessionHas('success', __('messages.tasks.Task updated successfully'));
         $this->assertDatabaseHas(
             'tasks',
             [

@@ -92,7 +92,7 @@ class EmailVerificationControllerTest extends TestCase
         $response = $this->actingAs($user)->post(route('verification.send'));
 
         $response->assertRedirect();
-        $response->assertSessionHas('status', 'verification-link-sent');
+        $response->assertSessionHas('status', __('messages.profile.verification-link-sent'));
         Notification::assertSentTo($user, VerifyEmail::class);
     }
 

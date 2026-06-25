@@ -94,7 +94,7 @@ class RecurringTaskControllerTest extends TestCase
         );
 
         $response->assertRedirect(route('recurring-tasks.index'));
-        $response->assertSessionHas('success', 'Recurring task created successfully.');
+        $response->assertSessionHas('success', __('messages.recurring-tasks.Recurring task created successfully'));
         $this->assertDatabaseHas(
             'recurring_tasks',
             [
@@ -318,7 +318,7 @@ class RecurringTaskControllerTest extends TestCase
         );
 
         $response->assertRedirect(route('recurring-tasks.index'));
-        $response->assertSessionHas('success', 'Recurring task updated successfully.');
+        $response->assertSessionHas('success', __('messages.recurring-tasks.Recurring task updated successfully'));
         $this->assertDatabaseHas(
             'recurring_tasks',
             [

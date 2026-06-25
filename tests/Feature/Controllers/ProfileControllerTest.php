@@ -75,7 +75,7 @@ class ProfileControllerTest extends TestCase
         );
 
         $response->assertRedirect(route('profile.edit'));
-        $response->assertSessionHas('status', 'profile-updated');
+        $response->assertSessionHas('status', __('messages.profile.profile-updated'));
 
         $user->refresh();
         $this->assertSame('Updated Name', $user->name);
@@ -208,7 +208,7 @@ class ProfileControllerTest extends TestCase
         );
 
         $response->assertRedirect();
-        $response->assertSessionHas('status', 'password-updated');
+        $response->assertSessionHas('status', __('messages.profile.password-updated'));
         $this->assertTrue(Hash::check($newPassword, $user->fresh()->password));
     }
 
