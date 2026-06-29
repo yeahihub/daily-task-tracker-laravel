@@ -35,8 +35,6 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             URL::forceScheme('https');
 
-            Log::debug('MAIL CONFIG', config('mail'));
-
             CarbonImmutable::setLocale(config('app.locale'));
             setlocale(LC_TIME, 'ru_RU.UTF-8');
 
