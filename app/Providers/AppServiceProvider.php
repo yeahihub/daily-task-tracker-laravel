@@ -14,6 +14,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Database\LazyLoadingViolationException;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
     {
         if (app()->environment('production')) {
             URL::forceScheme('https');
+
+            Log::debug('MAIL CONFIG', config('mail'));
 
             CarbonImmutable::setLocale(config('app.locale'));
             setlocale(LC_TIME, 'ru_RU.UTF-8');
