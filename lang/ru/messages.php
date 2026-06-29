@@ -12,7 +12,7 @@ return [
         'Register' => 'Зарегистрироваться',
         'Email Password Reset Link' => 'Отправить ссылку на восстановление пароля',
         'Confirm Password' => 'Подтвердите пароль',
-        'Registering...' => 'Регистрация',
+        'Registering' => 'Регистрация',
         'Already registered?' => 'Уже зарегистрированы?',
         'Reset Password' => 'Восстановить Пароль',
         'Go to login page' => 'Перейти на страницу авторизации',
