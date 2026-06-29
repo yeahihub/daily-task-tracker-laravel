@@ -16,14 +16,12 @@ return new class extends Migration
 
             $table->foreignId('user_id')
                 ->constrained()
-                ->cascadeOnDelete()
-                ->index();
+                ->cascadeOnDelete();
 
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained()
-                ->nullOnDelete()
-                ->index();
+                ->nullOnDelete();
 
             $table->string('title');
 
