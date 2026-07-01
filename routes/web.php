@@ -12,26 +12,6 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RecurringTaskController;
 use App\Http\Controllers\EmailVerificationController;
 
-
-use Illuminate\Support\Facades\Mail;
-
-Route::get('/test-resend', function () {
-    try {
-        Mail::raw('Test email', function ($message) {
-            $message->to('другой_адрес@example.com')
-                ->subject('Resend test');
-        });
-
-        return 'OK';
-    } catch (\Throwable $e) {
-        return response()->json([
-            'class' => get_class($e),
-            'message' => $e->getMessage(),
-        ], 500);
-    }
-});
-
-
 Route::middleware('guest')->group(function (): void {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])
