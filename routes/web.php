@@ -12,7 +12,27 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RecurringTaskController;
 use App\Http\Controllers\EmailVerificationController;
 
-Route::middleware('guest')->group(function(): void {
+
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/test-resend', function () {
+    try {
+        Mail::raw('Test email', function ($message) {
+            $message->to('другой_адрес@example.com')
+                ->subject('Resend test');
+        });
+
+        return 'OK';
+    } catch (\Throwable $e) {
+        return response()->json([
+            'class' => get_class($e),
+            'message' => $e->getMessage(),
+        ], 500);
+    }
+});
+
+
+Route::middleware('guest')->group(function (): void {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])
         ->name('login.post')
@@ -35,7 +55,7 @@ Route::middleware('guest')->group(function(): void {
         ->name('password.store');
 });
 
-Route::middleware(['auth'])->group(function(): void {
+Route::middleware(['auth'])->group(function (): void {
     Route::get('/email/verify', [EmailVerificationController::class, 'index'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
         ->middleware(['signed', 'throttle:10,1'])
@@ -46,7 +66,7 @@ Route::middleware(['auth'])->group(function(): void {
         ->name('verification.send');
 });
 
-Route::middleware(['auth', 'verified'])->group(function(): void {
+Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('categories', CategoryController::class)
         ->except(['show'])
@@ -67,7 +87,7 @@ Route::middleware(['auth', 'verified'])->group(function(): void {
     Route::redirect('/', '/dashboard');
 });
 
-Route::middleware(['auth'])->group(function(): void {
+Route::middleware(['auth'])->group(function (): void {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
